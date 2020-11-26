@@ -29,7 +29,7 @@ class Key{
     }
     if(!success)
     {
-      print("couldn't generate key. please check wall spawning rate.");
+      println("couldn't generate key. please check wall spawning rate.");
       return null;
     }
     return this;
@@ -220,19 +220,21 @@ class Key{
 }
 
 void setup(){
-  Key test = new Key(96);// generate key
+  Key test = new Key(64);// generate key (I recommend 32-64)
   test.printResult();// print details
+  if(test.solvePuzzle())println("Valid! this pattern is correct.");else {println("Invalid. maybe no answer.\nend");return;}
   
   // brute-force demo or something
   int attempt=1;
   int MAXATTEMPT=10000000;
+  println("regenerating public key(pattern)");
   test.generatePattern();// invalidate
-  if(test.solvePuzzle())print("Valid!");else print("Invalid.");
+  if(test.solvePuzzle()){println("Valid! ez!\nend");return;}else println("Invalid. let's break this key!");
   println("random pattern regeneration attack demo");
   test.generatePattern();// invalidate
   while(!test.solvePuzzle()&&attempt++<MAXATTEMPT){
     if(attempt%100000==0)println("random brute-force attempt: "+attempt+"/"+MAXATTEMPT);
     test.generatePattern();
   }
-  if(test.solvePuzzle())print("Valid! attempts: "+attempt);else print("Invalid.");
+  if(test.solvePuzzle())println("Valid! attempts: "+attempt+"\nend");else println("Invalid.\nend");
 }
