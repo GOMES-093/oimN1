@@ -233,7 +233,7 @@ void setup(){
   println("random pattern regeneration attack demo");
   test.generatePattern();// invalidate
   while(!test.solvePuzzle()&&attempt++<MAXATTEMPT){
-    if(attempt%100000==0)println("random brute-force attempt: "+attempt+"/"+MAXATTEMPT);
+    if(attempt%100000==0)println("random brute-force attempt: "+attempt+"/"+MAXATTEMPT+"("+100.*attempt/MAXATTEMPT+"%)");
     test.generatePattern();
   }
   if(test.solvePuzzle())println("Valid! attempts: "+attempt+"\nend");else println("Invalid.\nend");
