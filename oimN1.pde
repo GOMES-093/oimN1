@@ -234,5 +234,5 @@ void setup(){
     if(attempt%100000==0)println("random brute-force attempt: "+attempt+"/"+MAXATTEMPT);
     test.generatePattern();
   }
-  if(test.solvePuzzle())print("Valid!");else print("Invalid.");
+  if(test.solvePuzzle())print("Valid! attempts: "+attempt);else print("Invalid.");
 }
